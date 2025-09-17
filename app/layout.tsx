@@ -1,0 +1,23 @@
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Cinta Coffe",
+  description:
+    "Cinta Coffe merupakan produsen olahan kopi yang berasal dari Desa Cinta yang terletak di Kecamatan Karangtengah, Kabupaten Garut, Jawa Barat, dengan luas wilayah yang rata-rata adalah pertanian di ketinggian 1.000 mdpl",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="id">
+      <body className={`${inter.className} antialiased`}>{children}</body>
+    </html>
+  );
+}
