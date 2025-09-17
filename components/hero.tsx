@@ -11,7 +11,7 @@ export function Hero() {
           <br />
           Kopi Premium dari Lereng Garut
         </h1>
-        <p className="text-xs md:text-sm">
+        <p className="text-xs md:text-base">
           Ditanam di ketinggian 1.000 mdpl dengan udara sejuk dan tanah subur,
           Cinta Coffee menghadirkan kopi Arabika, Linias, dan Ateng berkualitas.
         </p>
