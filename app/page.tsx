@@ -1,4 +1,5 @@
 import { Collection } from "@/components/collection";
+import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Collection />
+      <Footer />
     </main>
   );
 }

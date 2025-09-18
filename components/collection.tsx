@@ -199,7 +199,7 @@ export function Collection() {
   ];
 
   return (
-    <section className="mt-5 min-h-[400px] bg-stone-200">
+    <section className="mt-5 min-h-[400px] bg-stone-200 pb-20">
       <div className="container">
         <h1 className="pt-16 text-center text-lg font-semibold text-stone-600 md:text-xl lg:text-3xl xl:text-[2.5rem]">
           Koleksi Premium Kami

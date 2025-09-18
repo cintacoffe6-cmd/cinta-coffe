@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import {
   LucideCoffee,
   LucideHome,
+  LucideInfo,
   LucideMenu,
   LucidePhone,
   LucideStore,
@@ -27,6 +28,11 @@ export function Navbar() {
       name: "Produk",
       href: "/products",
       icon: <LucideCoffee />,
+    },
+    {
+      name: "Tentang Kami",
+      href: "/about",
+      icon: <LucideInfo />,
     },
     {
       name: "Kontak",
@@ -66,7 +72,7 @@ export function Navbar() {
           className="w-[50px]"
         />
       </div>
-      <div className="hidden items-center gap-7 md:flex">
+      <div className="hidden items-center gap-3 md:flex">
         {navItems.map((item, index) => (
           <Button
             key={index}
