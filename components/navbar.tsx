@@ -1,34 +1,62 @@
+"use client";
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { LucideMenu } from "lucide-react";
+import {
+  LucideCoffee,
+  LucideHome,
+  LucideMenu,
+  LucidePhone,
+  LucideStore,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from "react";
 
 export function Navbar() {
   const navItems = [
     {
       name: "Beranda",
       href: "/",
+      icon: <LucideHome />,
     },
     {
-      name: "Kopi",
-      href: "/cofee",
-    },
-    {
-      name: "Tentang Kami",
-      href: "/about",
+      name: "Produk",
+      href: "/products",
+      icon: <LucideCoffee />,
     },
     {
       name: "Kontak",
       href: "/contact",
+      icon: <LucidePhone />,
+    },
+    {
+      name: "Toko",
+      href: "#",
+      icon: <LucideStore />,
     },
   ];
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="container flex h-20 justify-between">
+    <nav
+      className={`sticky top-0 z-50 container flex h-20 justify-between bg-white transition-colors ${
+        isScrolled ? "border-b border-gray-400" : ""
+      }`}
+    >
       <div className="flex items-center">
         <Image
           src={"/logo.jpg"}
@@ -43,9 +71,9 @@ export function Navbar() {
           <Button
             key={index}
             variant="ghost"
-            className="rounded-xl hover:bg-stone-200"
+            className={`"hover:bg-stone-200"} rounded-xl`}
           >
-            {item.name}
+            {item.icon} {item.name}
           </Button>
         ))}
       </div>
@@ -58,7 +86,9 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {navItems.map((item, index) => (
-              <DropdownMenuItem key={index}>{item.name}</DropdownMenuItem>
+              <DropdownMenuItem key={index}>
+                {item.icon} {item.name}
+              </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>

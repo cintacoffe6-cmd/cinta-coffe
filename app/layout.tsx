@@ -5,9 +5,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Cinta Coffe",
+  title: "Cinta Coffee",
   description:
-    "Cinta Coffe merupakan produsen olahan kopi yang berasal dari Desa Cinta yang terletak di Kecamatan Karangtengah, Kabupaten Garut, Jawa Barat, dengan luas wilayah yang rata-rata adalah pertanian di ketinggian 1.000 mdpl",
+    "Cinta Coffee merupakan produsen olahan kopi yang berasal dari Desa Cinta yang terletak di Kecamatan Karangtengah, Kabupaten Garut, Jawa Barat, dengan luas wilayah yang rata-rata adalah pertanian di ketinggian 1.000 mdpl",
 };
 
 export default function RootLayout({
