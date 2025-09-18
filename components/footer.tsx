@@ -15,7 +15,8 @@ export function Footer() {
         <div className="flex w-1/2 flex-col items-end justify-between py-16">
           <div className="flex gap-5">
             <Link href={"/"}>Beranda</Link>
-            <Link href={"/#products"}>Produk </Link>
+            <Link href={"/#products"}>Produk</Link>
+            <Link href={"/about"}>Tentang Kami</Link>
           </div>
           <div className="flex gap-5 text-xl">
             <LucidePhone />

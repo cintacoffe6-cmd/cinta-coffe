@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { LucideShoppingCart } from "lucide-react";
+import { LucideShoppingCart, MoveUpRight } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -16,8 +17,10 @@ export function Hero() {
           Cinta Coffee menghadirkan kopi Arabika, Linias, dan Ateng berkualitas.
         </h2>
         <div className="flex justify-center sm:justify-start">
-          <Button className="bg-yellow-500 hover:bg-yellow-600">
-            Beli Sekarang <LucideShoppingCart />
+          <Button className="bg-yellow-500 hover:bg-yellow-600" asChild>
+            <Link href="https://id.shp.ee/WFgWS1L" target="_blank">
+              Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
+            </Link>
           </Button>
         </div>
       </div>

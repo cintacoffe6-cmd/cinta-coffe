@@ -1,7 +1,8 @@
-import { LucideShoppingCart } from "lucide-react";
+import { LucideShoppingCart, MoveUpRight } from "lucide-react";
 import { CardProduct, CardProductProps } from "./card-product";
 import { Button } from "./ui/button";
 import { DrawerClose } from "./ui/drawer";
+import Link from "next/link";
 
 export function Collection() {
   const product: CardProductProps[] = [
@@ -15,6 +16,8 @@ export function Collection() {
       description:
         "Kopi arabika khas Desa Cinta, ditanam di 1.000 mdpl dengan fermentasi semi-washed khusus. Hasilnya aroma fruity dengan hints floral, body lembut, clean cup, dan aftertaste manis alami.",
       price: "Rp35.000",
+      productLink:
+        "https://shopee.co.id/Kopi-Arabika-Cinta-Coffee-Original-i.1634745839.41069655330",
       drawerContent: (
         <div className="prose max-w-none">
           <h2 className="mb-4 text-lg font-semibold">Keunggulan Kopi Cinta</h2>
@@ -76,8 +79,15 @@ export function Collection() {
             <p className="text-sm font-semibold">Kopi Arabika Cinta Coffee</p>
             <p className="text-sm font-semibold">Rp35.000</p>
           </div>
-          <Button>
-            Beli Sekarang <LucideShoppingCart />
+          <Button asChild>
+            <Link
+              href={
+                "https://shopee.co.id/Kopi-Arabika-Cinta-Coffee-Original-i.1634745839.41069655330"
+              }
+              target="_blank"
+            >
+              Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
+            </Link>
           </Button>
           <DrawerClose asChild>
             <Button variant="outline">Kembali</Button>
@@ -91,6 +101,8 @@ export function Collection() {
       description:
         "Teh herbal unik dari kulit buah kopi arabika pilihan, kaya antioksidan dengan rasa fruity manis alami, aroma segar dan Menyehatkan tubuh sekaligus mendukung green product Desa Cinta.",
       price: "Rp40.000",
+      productLink:
+        "https://shopee.co.id/Teh-Cascara-Cinta-Coffee-i.1634745839.40669644294",
       drawerContent: (
         <div className="prose max-w-none">
           <h2 className="mb-4 text-lg font-semibold">
@@ -187,8 +199,15 @@ export function Collection() {
             <p className="text-sm font-semibold">Teh Cascara Cinta Coffee</p>
             <p className="text-sm font-semibold">Rp40.000</p>
           </div>
-          <Button>
-            Beli Sekarang <LucideShoppingCart />
+          <Button asChild>
+            <Link
+              href={
+                "https://shopee.co.id/Teh-Cascara-Cinta-Coffee-i.1634745839.40669644294"
+              }
+              target="_blank"
+            >
+              Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
+            </Link>
           </Button>
           <DrawerClose asChild>
             <Button variant="outline">Kembali</Button>
@@ -201,7 +220,10 @@ export function Collection() {
   return (
     <section className="mt-5 min-h-[400px] bg-stone-200 pb-20">
       <div className="container">
-        <h1 className="pt-16 text-center text-lg font-semibold text-stone-600 md:text-xl lg:text-3xl xl:text-[2.5rem]">
+        <h1
+          id="products"
+          className="pt-16 text-center text-lg font-semibold text-stone-600 md:text-xl lg:text-3xl xl:text-[2.5rem]"
+        >
           Koleksi Premium Kami
         </h1>
         <p className="pt-5 text-center">

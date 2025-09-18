@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
-import { LucideInfo, LucideShoppingCart } from "lucide-react";
+import { LucideInfo, LucideShoppingCart, MoveUpRight } from "lucide-react";
 import {
   Drawer,
   DrawerContent,
@@ -11,12 +11,14 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import { useState } from "react";
+import Link from "next/link";
 
 export interface CardProductProps {
   imageSrc: string[];
   title: string;
   description: string;
   price: string;
+  productLink: string;
   drawerContent: React.ReactNode;
   drawerFooter: React.ReactNode;
 }
@@ -46,8 +48,10 @@ export function CardProduct(props: CardProductProps) {
           <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
             <p className="text-xl font-semibold">{props.price}</p>
             <div className="flex w-full flex-col gap-3 lg:w-auto lg:flex-row">
-              <Button>
-                Beli Sekarang <LucideShoppingCart />
+              <Button asChild>
+                <Link href={props.productLink} target="_blank">
+                  Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
+                </Link>
               </Button>
               <DrawerTrigger asChild>
                 <Button variant={"secondary"}>

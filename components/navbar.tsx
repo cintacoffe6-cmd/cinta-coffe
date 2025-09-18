@@ -8,6 +8,7 @@ import {
   LucideMenu,
   LucidePhone,
   LucideStore,
+  MoveUpRight,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -16,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function Navbar() {
   const navItems = [
@@ -23,26 +25,31 @@ export function Navbar() {
       name: "Beranda",
       href: "/",
       icon: <LucideHome />,
+      target: "_self",
     },
     {
       name: "Produk",
-      href: "/products",
+      href: "#products",
       icon: <LucideCoffee />,
+      target: "_self",
     },
     {
       name: "Tentang Kami",
       href: "/about",
       icon: <LucideInfo />,
+      target: "_self",
     },
     {
       name: "Kontak",
-      href: "/contact",
+      href: "#",
       icon: <LucidePhone />,
+      target: "_blank",
     },
     {
       name: "Toko",
-      href: "#",
+      href: "https://id.shp.ee/WFgWS1L",
       icon: <LucideStore />,
+      target: "_blank",
     },
   ];
 
@@ -64,13 +71,15 @@ export function Navbar() {
       }`}
     >
       <div className="flex items-center">
-        <Image
-          src={"/logo.jpg"}
-          alt="logo"
-          width={75}
-          height={75}
-          className="w-[50px]"
-        />
+        <Link href="/">
+          <Image
+            src={"/logo.jpg"}
+            alt="logo"
+            width={75}
+            height={75}
+            className="w-[50px]"
+          />
+        </Link>
       </div>
       <div className="hidden items-center gap-3 md:flex">
         {navItems.map((item, index) => (
@@ -78,8 +87,12 @@ export function Navbar() {
             key={index}
             variant="ghost"
             className={`"hover:bg-stone-200"} rounded-xl`}
+            asChild
           >
-            {item.icon} {item.name}
+            <Link href={item.href} target={item.target}>
+              {item.icon} {item.name}{" "}
+              {item.target === "_blank" && <MoveUpRight />}
+            </Link>
           </Button>
         ))}
       </div>
@@ -92,8 +105,11 @@ export function Navbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             {navItems.map((item, index) => (
-              <DropdownMenuItem key={index}>
-                {item.icon} {item.name}
+              <DropdownMenuItem key={index} asChild>
+                <Link href={item.href} target={item.target}>
+                  {item.icon} {item.name}
+                  {item.target === "_blank" && <MoveUpRight />}
+                </Link>
               </DropdownMenuItem>
             ))}
           </DropdownMenuContent>
