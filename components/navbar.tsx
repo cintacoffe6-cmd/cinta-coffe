@@ -41,7 +41,7 @@ export function Navbar() {
     },
     {
       name: "Kontak",
-      href: "#",
+      href: "https://wa.me/6281281675969",
       icon: <LucidePhone />,
       target: "_blank",
     },
