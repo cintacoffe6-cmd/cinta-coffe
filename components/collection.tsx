@@ -1,8 +1,4 @@
-import { LucideShoppingCart, MoveUpRight } from "lucide-react";
 import { CardProduct, CardProductProps } from "./card-product";
-import { Button } from "./ui/button";
-import { DrawerClose } from "./ui/drawer";
-import Link from "next/link";
 
 export function Collection() {
   const product: CardProductProps[] = [
@@ -71,27 +67,6 @@ export function Collection() {
               </p>
             </li>
           </ol>
-        </div>
-      ),
-      drawerFooter: (
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold">Kopi Arabika Cinta Coffee</p>
-            <p className="text-sm font-semibold">Rp35.000</p>
-          </div>
-          <Button asChild>
-            <Link
-              href={
-                "https://shopee.co.id/Kopi-Arabika-Cinta-Coffee-Original-i.1634745839.41069655330"
-              }
-              target="_blank"
-            >
-              Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
-            </Link>
-          </Button>
-          <DrawerClose asChild>
-            <Button variant="outline">Kembali</Button>
-          </DrawerClose>
         </div>
       ),
     },
@@ -193,27 +168,33 @@ export function Collection() {
           </ol>
         </div>
       ),
-      drawerFooter: (
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-semibold">Teh Cascara Cinta Coffee</p>
-            <p className="text-sm font-semibold">Rp40.000</p>
-          </div>
-          <Button asChild>
-            <Link
-              href={
-                "https://shopee.co.id/Teh-Cascara-Cinta-Coffee-i.1634745839.40669644294"
-              }
-              target="_blank"
-            >
-              Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
-            </Link>
-          </Button>
-          <DrawerClose asChild>
-            <Button variant="outline">Kembali</Button>
-          </DrawerClose>
-        </div>
-      ),
+    },
+    {
+      imageSrc: [
+        "/green-bean-arabika-robusta-1.webp",
+        "/green-bean-arabika-robusta-2.webp",
+        "/green-bean-arabika-robusta-3.webp",
+        "/green-bean-arabika-robusta-4.webp",
+      ],
+      title: "Green Bean Kopi Arabika dan Robusta Khas Desa Cinta",
+      description:
+        "Green Bean Kopi Arabika dan Robusta Khas Desa Cinta Memiliki Karakter yang Unik Ditanam diatas ketinggian 1000 Mdpl Lebih dengan teknik fermentasi khusus",
+      price: "Rp80.000",
+      productLink:
+        "https://shopee.co.id/Green-Bean-Kopi-Arabika-dan-Robusta-Khas-Desa-Cinta-i.1634745839.40569750301",
+      drawerContent:
+        "Green Bean Kopi Arabika dan Robusta Khas Desa Cinta Memiliki Karakter yang Unik Ditanam diatas ketinggian 1000 Mdpl Lebih dengan teknik fermentasi khusus",
+    },
+    {
+      imageSrc: ["/cherry.webp"],
+      title: "Buah Cherry Kopi Merah Khas Desa Cinta",
+      description:
+        "Biji Kopi Cherrry Merah KHas Desa Cinta Dengan Karakter Body Tebal dan Keasaman Khas",
+      price: "Rp50.000",
+      productLink:
+        "https://shopee.co.id/Jual-Buah-Cherry-Kopi-Merah-Khas-Desa-Cinta-i.1634745839.40619695376",
+      drawerContent:
+        "Biji Kopi Cherrry Merah KHas Desa Cinta Dengan Karakter Body Tebal dan Keasaman Khas",
     },
   ];
 
@@ -230,10 +211,12 @@ export function Collection() {
           Dua varietas kopi yang luar biasa, masing-masing dengan karakter dan
           profil rasa yang unik
         </p>
-        <div className="flex flex-col justify-center gap-10 pt-7 sm:flex-row">
-          {product.map((item, index) => (
-            <CardProduct key={index} {...item} />
-          ))}
+        <div className="flex justify-center">
+          <div className="grid w-full grid-cols-1 place-items-center gap-5 pt-10 sm:grid-cols-2 lg:w-[80%] xl:w-[60%] 2xl:w-[50%]">
+            {product.map((item, index) => (
+              <CardProduct key={index} {...item} />
+            ))}
+          </div>
         </div>
       </div>
     </section>

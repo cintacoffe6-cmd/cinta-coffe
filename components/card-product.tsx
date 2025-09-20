@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { LucideInfo, LucideShoppingCart, MoveUpRight } from "lucide-react";
 import {
   Drawer,
+  DrawerClose,
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
@@ -20,7 +21,6 @@ export interface CardProductProps {
   price: string;
   productLink: string;
   drawerContent: React.ReactNode;
-  drawerFooter: React.ReactNode;
 }
 
 export function CardProduct(props: CardProductProps) {
@@ -28,77 +28,90 @@ export function CardProduct(props: CardProductProps) {
 
   return (
     <Drawer>
-      <Card className="xl:w-[450px]">
-        <CardContent className="flex h-full flex-col justify-between gap-5">
+      <Card className="h-full">
+        <CardContent className="flex h-full flex-col justify-between gap-3">
           <div className="flex flex-col gap-3">
-            <div className="flex items-center justify-center">
+            <div className="flex justify-center">
               <Image
                 src={props.imageSrc[0]}
                 alt="produk"
                 width={300}
                 height={300}
+                className="object-cover"
               />
             </div>
-            <h1 className="text-base font-semibold md:text-lg">
+            <h1 className="line-clamp-2 text-base font-semibold md:text-lg">
               {props.title}
             </h1>
-            <p className="text-justify">{props.description}</p>
           </div>
 
-          <div className="flex flex-col items-center justify-between gap-3 lg:flex-row">
+          <div className="flex flex-col items-center gap-3">
+            <p className="line-clamp-2 text-justify">{props.description}</p>
             <p className="text-xl font-semibold">{props.price}</p>
-            <div className="flex w-full flex-col gap-3 lg:w-auto lg:flex-row">
-              <Button asChild>
-                <Link href={props.productLink} target="_blank">
-                  Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
-                </Link>
+            <Button asChild className="w-full">
+              <Link href={props.productLink} target="_blank">
+                Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
+              </Link>
+            </Button>
+            <DrawerTrigger asChild>
+              <Button variant={"secondary"} className="w-full">
+                Lihat Produk <LucideInfo />
               </Button>
-              <DrawerTrigger asChild>
-                <Button variant={"secondary"}>
-                  Lihat Produk <LucideInfo />
-                </Button>
-              </DrawerTrigger>
-            </div>
+            </DrawerTrigger>
           </div>
         </CardContent>
       </Card>
-      <DrawerContent className="h-[700px]">
+      <DrawerContent className="container h-[700px]">
         <DrawerHeader>
-          <DrawerTitle>{props.title}</DrawerTitle>
+          <DrawerTitle className="line-clamp-1 min-[390px]:line-clamp-none">
+            {props.title}
+          </DrawerTitle>
         </DrawerHeader>
-        <div className="container flex h-full flex-col lg:flex-row lg:justify-between">
-          <div className="flex h-[50%] w-full flex-col gap-3 overflow-auto min-[390px]:h-[60%] sm:flex-row lg:h-[80%] lg:w-[68%]">
-            <div className="flex w-full flex-col gap-3 sm:sticky sm:top-0 sm:w-[40%]">
-              <Image
-                src={image}
-                alt="produk"
-                width={250}
-                height={250}
-                className="h-[250px] w-full object-cover"
-              />
-              <div className="flex gap-3">
-                {props.imageSrc.map((image, index) => (
-                  <div
-                    key={index}
-                    className="h-[50px] w-[50px] cursor-pointer hover:scale-90"
-                    onClick={() => setImage(image)}
-                  >
+        <div className="flex h-full flex-col gap-5 xl:flex-row">
+          <div className="flex h-[45%] flex-col gap-5 overflow-auto min-[390px]:h-[60%] sm:flex-row xl:h-full">
+            <div className="flex flex-col gap-5 sm:sticky sm:top-0">
+              <div className="flex flex-col items-center">
+                <Image
+                  src={image}
+                  alt="produk"
+                  width={300}
+                  height={300}
+                  className="h-[250px] object-cover"
+                />
+              </div>
+
+              <div className="flex gap-5 overflow-auto">
+                {props.imageSrc.map((item, index) => {
+                  return (
                     <Image
                       key={index}
-                      src={image}
+                      src={item}
                       alt="produk"
                       width={300}
                       height={300}
-                      className="h-full w-full object-cover"
+                      className="h-[50px] w-[50px] cursor-pointer object-cover"
+                      onClick={() => setImage(item)}
                     />
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
-            <div className="w-full sm:w-[50%]">{props.drawerContent}</div>
+
+            <div className="w-full">{props.drawerContent}</div>
           </div>
-          <div className="mt-5 h-[28%] w-full lg:w-[30%]">
-            {props.drawerFooter}
+
+          <div className="flex flex-col justify-center gap-3 py-3 xl:justify-start">
+            <div className="flex justify-center">
+              <p className="text-sm font-semibold">{props.price}</p>
+            </div>
+            <Button asChild>
+              <Link href={props.productLink} target="_blank">
+                Beli Sekarang <LucideShoppingCart /> <MoveUpRight />
+              </Link>
+            </Button>
+            <DrawerClose asChild>
+              <Button variant="outline">Kembali</Button>
+            </DrawerClose>
           </div>
         </div>
       </DrawerContent>
