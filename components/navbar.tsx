@@ -66,54 +66,56 @@ export function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 container flex h-20 justify-between bg-white transition-colors ${
+      className={`sticky top-0 z-50 h-20 bg-white transition-colors ${
         isScrolled ? "border-b border-gray-400" : ""
       }`}
     >
-      <div className="flex items-center">
-        <Link href="/">
-          <Image
-            src={"/logo.jpg"}
-            alt="logo"
-            width={75}
-            height={75}
-            className="w-[50px]"
-          />
-        </Link>
-      </div>
-      <div className="hidden items-center gap-3 md:flex">
-        {navItems.map((item, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            className={`"hover:bg-stone-200"} rounded-xl`}
-            asChild
-          >
-            <Link href={item.href} target={item.target}>
-              {item.icon} {item.name}{" "}
-              {item.target === "_blank" && <MoveUpRight />}
-            </Link>
-          </Button>
-        ))}
-      </div>
-      <div className="flex items-center md:hidden">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline">
-              <LucideMenu />
+      <div className="container flex h-full justify-between">
+        <div className="flex items-center">
+          <Link href="/">
+            <Image
+              src={"/logo.jpg"}
+              alt="logo"
+              width={75}
+              height={75}
+              className="w-[50px]"
+            />
+          </Link>
+        </div>
+        <div className="hidden items-center gap-3 md:flex">
+          {navItems.map((item, index) => (
+            <Button
+              key={index}
+              variant="ghost"
+              className={`"hover:bg-stone-200"} rounded-xl`}
+              asChild
+            >
+              <Link href={item.href} target={item.target}>
+                {item.icon} {item.name}{" "}
+                {item.target === "_blank" && <MoveUpRight />}
+              </Link>
             </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {navItems.map((item, index) => (
-              <DropdownMenuItem key={index} asChild>
-                <Link href={item.href} target={item.target}>
-                  {item.icon} {item.name}
-                  {item.target === "_blank" && <MoveUpRight />}
-                </Link>
-              </DropdownMenuItem>
-            ))}
-          </DropdownMenuContent>
-        </DropdownMenu>
+          ))}
+        </div>
+        <div className="flex items-center md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                <LucideMenu />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {navItems.map((item, index) => (
+                <DropdownMenuItem key={index} asChild>
+                  <Link href={item.href} target={item.target}>
+                    {item.icon} {item.name}
+                    {item.target === "_blank" && <MoveUpRight />}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </nav>
   );
